@@ -35,4 +35,53 @@ if player.PlayerGui:FindFirstChild("TeleportGui") then
 end
 
 -- GUI作成
-local screenGui = 
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "TeleportGui"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = player:WaitForChild("PlayerGui")
+
+-- ゆうれいテレポートボタン
+local ghostButton = Instance.new("TextButton")
+ghostButton.Size = UDim2.new(0, 150, 0, 50)
+ghostButton.Position = UDim2.new(0, 50, 0, 100)
+ghostButton.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
+ghostButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ghostButton.Text = "ゆうれい"
+ghostButton.Font = Enum.Font.SourceSansBold
+ghostButton.TextSize = 24
+ghostButton.Parent = screenGui
+ghostButton.Active = true
+ghostButton.Draggable = true
+
+ghostButton.MouseButton1Click:Connect(function()
+    local hrp = getHumanoidRootPart()
+    if hrp then
+        hrp.CFrame = CFrame.new(938, 249, 32888)
+        print("テレポート：ゆうれい")
+    else
+        warn("HumanoidRootPartが見つかりません。")
+    end
+end)
+
+-- まめつぶぐみ テレポートボタン
+local beanButton = Instance.new("TextButton")
+beanButton.Size = UDim2.new(0, 150, 0, 50)
+beanButton.Position = UDim2.new(0, 50, 0, 170)
+beanButton.BackgroundColor3 = Color3.fromRGB(255, 50, 0)
+beanButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+beanButton.Text = "まめつぶぐみ"
+beanButton.Font = Enum.Font.SourceSansBold
+beanButton.TextSize = 20
+beanButton.Parent = screenGui
+beanButton.Active = true
+beanButton.Draggable = true
+
+beanButton.MouseButton1Click:Connect(function()
+    local hrp = getHumanoidRootPart()
+    if hrp then
+        hrp.CFrame = CFrame.new(2284, 15, 911)
+        print("テレポート：まめつぶぐみ")
+    else
+        warn("HumanoidRootPartが見つかりません。")
+    end
+end)
